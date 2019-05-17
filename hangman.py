@@ -6,7 +6,7 @@ wrong = []
 guessed = ""
 
 # list of possible words
-words = ["doggo","pupper","candy", "waffles", "toronto", "vancouver", "pancake"]
+word_bank = ["doggo","pupper","candy", "waffles", "toronto", "vancouver", "pancake"]
 
 
 def init_game():
@@ -14,7 +14,7 @@ def init_game():
     global guessed
     #getting random new word
     index = random.randint(0,6)
-    word = words[index]
+    word = word_bank[index]
     #init player variables
     if points != 0:
         points -= points
@@ -23,7 +23,9 @@ def init_game():
     print_status("", word)
     while (won(word) == False) and (len(wrong) < 10):
         guess = input("\nGuess a letter: ")
-        if guess in word:
+        if guess in guessed or guess in wrong:
+            print("Already guessed. Try again.")
+        elif guess in word:
             points += 1
             guessed += guess
         else:
