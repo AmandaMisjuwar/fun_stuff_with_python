@@ -6,7 +6,7 @@ wrong = []
 guessed = ""
 
 # list of possible words
-word_bank = ["doggo","pupper","candy", "waffles", "toronto", "vancouver", "pancake"]
+word_bank = ["doggo","pupper","cookies", "toronto", "vancouver", "acrobatics","archaeology","astronomy","christmas","moonchild","serendipity"]
 
 
 def init_game():
@@ -19,7 +19,8 @@ def init_game():
     if points != 0:
         points -= points
     # ----------------start game---------------------------
-    print("START THE GAME!")
+    print("\n")
+    print("--------- HANGMAN START ---------")
     print_status("", word)
     while (won(word) == False) and (len(wrong) < 10):
         guess = input("\nGuess a letter: ")
@@ -42,9 +43,9 @@ def init_game():
 def print_status(guess, word):
     print ("***********************")
     print("Score: %d" % points)
-    print("Wrong guesses: ")
+    print("Wrong guesses: ", end='')
     print(wrong)
-    print("Word:")
+    print("Word:", end='')
     for x in word:
         if x in guessed:
             print(" " + x, end = '')
